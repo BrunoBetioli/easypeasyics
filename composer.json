@@ -1,0 +1,26 @@
+{
+    "name": "BrunoBetioli/easypeasyics",
+    "description": "Simple ICS Generator",
+    "keywords": [
+        "ICS",
+        "iCalendar"
+    ],
+    "homepage": "https://github.com/BrunoBetioli",
+    "license": "GNU GPLv3",
+    "authors": [
+        {
+            "name": "Bruno Betioli",
+            "email": "brunobetioli@yahoo.com.br",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.1"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"BrunoBetioli\EasyPeasyICS\\": "src/"
+    	}
+    }
+}
