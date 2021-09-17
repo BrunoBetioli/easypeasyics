@@ -1,5 +1,5 @@
 <?php
-namespace BrunoBetioli/EasyPeasyICS;
+namespace BrunoBetioli\EasyPeasyICS;
 
 /* ------------------------------------------------------------------------ */
 /* EasyPeasyICS
