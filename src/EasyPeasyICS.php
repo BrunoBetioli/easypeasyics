@@ -49,37 +49,37 @@ class EasyPeasyICS
 
         /* Add header */
         $ics .= 'BEGIN:VCALENDAR';
-        $ics .= 'PRODID:-//Mailer//NONSGML v1.0//EN';
-        $ics .= 'VERSION:2.0';
-        $ics .= 'CALSCALE:GREGORIAN';
-        $ics .= 'METHOD:PUBLISH';
-        $ics .= 'X-WR-CALNAME:'.$this->calendarName;
+        $ics .= PHP_EOL . 'PRODID:-//Mailer//NONSGML v1.0//EN';
+        $ics .= PHP_EOL . 'VERSION:2.0';
+        $ics .= PHP_EOL . 'CALSCALE:GREGORIAN';
+        $ics .= PHP_EOL . 'METHOD:PUBLISH';
+        $ics .= PHP_EOL . 'X-WR-CALNAME:'.$this->calendarName;
 
         /* Add events */
         foreach ($this->events as $event) {
-            $ics .= 'BEGIN:VEVENT';
-            $ics .= 'UID:' . md5(uniqid(mt_rand(), true)) . '@EasyPeasyICS.php';
-            $ics .= 'DTSTAMP:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
-            $ics .= 'DTSTART:' . gmdate('Ymd', $event['start']) . 'T' . gmdate('His', $event['start']) . 'Z';
-            $ics .= 'DTEND:' . gmdate('Ymd', $event['end']) . 'T' . gmdate('His', $event['end']) . 'Z';
+            $ics .= PHP_EOL . 'BEGIN:VEVENT';
+            $ics .= PHP_EOL . 'UID:' . md5(uniqid(mt_rand(), true)) . '@EasyPeasyICS.php';
+            $ics .= PHP_EOL . 'DTSTAMP:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
+            $ics .= PHP_EOL . 'DTSTART:' . gmdate('Ymd', $event['start']) . 'T' . gmdate('His', $event['start']) . 'Z';
+            $ics .= PHP_EOL . 'DTEND:' . gmdate('Ymd', $event['end']) . 'T' . gmdate('His', $event['end']) . 'Z';
             if (!empty($event['organizer']) && !empty($event['organizer_email'])) {
-                $ics .= 'ORGANIZER;CN=' . $event['organizer'] . ':mailto:' . $event['organizer_email'];
+                $ics .= PHP_EOL . 'ORGANIZER;CN=' . $event['organizer'] . ':mailto:' . $event['organizer_email'];
             }
-            $ics .= 'SUMMARY:' . str_replace("\n", "\\n", $event['summary']);
+            $ics .= PHP_EOL . 'SUMMARY:' . str_replace("\n", "\\n", $event['summary']);
             if (!empty($event['description'])) {
-                $ics .= 'DESCRIPTION:' . str_replace('\n', '\\n', $event['description']);
+                $ics .= PHP_EOL . 'DESCRIPTION:' . str_replace('\n', '\\n', $event['description']);
             }
             if (!empty($event['location'])) {
-                $ics .= 'LOCATION:' . str_replace('\n', '\\n', $event['location']);
+                $ics .= PHP_EOL . 'LOCATION:' . str_replace('\n', '\\n', $event['location']);
             }
-            $ics .= 'CREATED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
-            $ics .= 'LAST-MODIFIED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
-            $ics .= 'URL;VALUE=URI:' . $event['url'];
-            $ics .= 'END:VEVENT';
+            $ics .= PHP_EOL . 'CREATED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
+            $ics .= PHP_EOL . 'LAST-MODIFIED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
+            $ics .= PHP_EOL . 'URL;VALUE=URI:' . $event['url'];
+            $ics .= PHP_EOL . 'END:VEVENT';
         }
 
         /* Footer */
-        $ics .= 'END:VCALENDAR';
+        $ics .= PHP_EOL . 'END:VCALENDAR';
 
         if ($output) {
             /* Output */
