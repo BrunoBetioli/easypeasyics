@@ -20,7 +20,7 @@
     },
     "autoload": {
     	"psr-4": {
-    		"BrunoBetioli\EasyPeasyICS\\": "src/"
+    		"BrunoBetioli\\EasyPeasyICS\\": "src/"
     	}
     }
 }
