@@ -72,6 +72,13 @@ class EasyPeasyICS
             if (!empty($event['location'])) {
                 $ics .= PHP_EOL . 'LOCATION:' . str_replace('\n', '\\n', $event['location']);
             }
+            if (key_exists('guests', $event) && is_array($event['guests']) && !empty($event['guests'])) {
+                foreach ($event['guests'] as $guest) {
+                    if (key_exists('name', $guest) && key_exists('email', $guest)) {
+                        $ics .= PHP_EOL . 'ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN="' . $guest['name'] . '";X-NUM-GUESTS=0:mailto:' . $guest['email'];
+                    }
+                }
+            }
             $ics .= PHP_EOL . 'CREATED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
             $ics .= PHP_EOL . 'LAST-MODIFIED:' . gmdate('Ymd') . 'T' . gmdate('His') . 'Z';
             $ics .= PHP_EOL . 'URL;VALUE=URI:' . $event['url'];
